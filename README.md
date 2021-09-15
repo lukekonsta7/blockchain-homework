@@ -124,3 +124,68 @@ Run the same command for node2.
 Get excited, because your blockchain is only a couple steps away from being brought to life!
 
 ![image](https://user-images.githubusercontent.com/84012921/133356601-77659c48-5986-4be8-85d8-7233ee38a548.png)
+
+Bringing your blockchain to life
+In this activity, you will start both previously created nodes to bring your blockchain to life.
+
+
+node1 will be a full node that is also mining.
+
+
+node2 will be a full node that exposes an RPC port, allowing you to talk to it with other apps like MyCrypto.
+
+
+
+Instructions
+Time to start your blockchain network! Open a terminal window (Git Bash in Windows) navigate to your Blockchain-Tools folder and follow the next steps.
+In your notes text file, make sure to keep track of every command you run in this activity for later. You can use these notes as a cheat-sheet later to easily start your chain again.
+
+Launch the first node into mining mode with the following command:
+
+./geth --datadir node1 --mine --minerthreads 1
+
+
+The --mine flag tells the node to mine new blocks.
+
+
+The --minerthreads flag tells geth how many CPU threads, or "workers" to use during mining. Since our difficulty is low, we can set it to 1.
+
+
+You should see the node Committing new mining work:
+
+![image](https://user-images.githubusercontent.com/84012921/133361268-f7d9b04b-47cf-46d3-8b9c-dc4e5e741aec.png)
+
+
+Copy this command into your notes and label it Start Node 1.
+
+Now you will launch the second node and configure it to let us talk to the chain via RPC.
+
+Scroll up in the terminal window where node1 is running, and copy the entire enode:// address (including the last @address:port segment) of the first node located in the Started P2P Networking line:
+
+
+![image](https://user-images.githubusercontent.com/84012921/133361286-71676a5c-41a0-45a6-9b50-a363b44ddd6b.png)
+
+
+
+We will need this address to tell the second node where to find the first node.
+
+
+Open another terminal window and navigate to the same directory as before.
+
+
+Launch the second node, enable RPC, change the sync port, and pass the enode:// address of the first node in quotes by running the following command (it will differ in Windows and OS X):
+
+
+Running in OS X:
+
+
+./geth --datadir node2 --port 30304 --rpc --bootnodes "enode://<replace with node1 enode address>"
+
+Running in Microsoft Windows:
+
+./geth --datadir node2 --port 30304 --rpc --bootnodes "enode://<replace with node1 enode address>" --ipcdisable
+
+The output of the second node should show information about Importing block segments and synchronization:
+
+![image](https://user-images.githubusercontent.com/84012921/133361306-7763b00f-3fbe-4011-bc21-e58c92ab53f7.png)
+
