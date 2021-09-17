@@ -45,7 +45,7 @@ You will then run:
 1. _Run ./geth --datadir node1 --mine --minerthreads 1
 2. _Take note of the hightlighted area, copy it as you will need it for the node_
 
-![image](https://user-images.githubuserontent.com/84012921/133363826-22394ff6-8da5-48b2-a46d-33c7a6a48f39.png)
+![image](https://user-images.githubusercontent.com/84012921/133708955-763bfec8-9a43-4fc5-a2ab-bd020f59cb36.png)
 
 1. _Run ./geth --datadir node2 --port 30304 --rpc --bootnodes "<mark>INPUT YOUR ENODE HERE</mark>" --ipcdisable
 
